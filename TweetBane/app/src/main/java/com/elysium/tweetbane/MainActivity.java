@@ -86,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if (!response.isSuccessful()){
+
+                if (!response.isSuccessful()) {
                     throw new IOException("Unexpected Error: "+response);
                 }
 
@@ -123,8 +124,10 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 Gson gson = new Gson();
+
                 Type listtype = new TypeToken<List<Tweets>>(){}.getType();
                 final List<Tweets> tweets = gson.fromJson(response.body().string(),listtype);
+
                 MainActivity.this.runOnUiThread(new Runnable() {
 
                     @Override
